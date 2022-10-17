@@ -1,34 +1,41 @@
 public class GameBord {
-    private String[][] GameTable;
+    private final Square[][] gameTable;
 
     public GameBord() {
-        this.GameTable = new String[][]{
-                {" ? ", " ? ", " ? ", " ? ", " ? "},
-                {" ? ", " ? ", " ? ", " ? ", " ? "},
-                {" ? ", " ? ", " ? ", " ? ", " ? "},
-                {" ? ", " ? ", " ? ", " ? ", " ? "}
-
-
-
-        };
+        this.gameTable  = new Square[5][4];
+        for(int x = 0; x < 5; x++){
+            for(int y = 0; y < 4; y++){
+                this.gameTable[x][y] = new Square();
+            }
+        }
     }
 
 
-    public String[][] getGameTable() {
+    public Square[][] getGameTable() {
+        return gameTable;
+    }
 
-        return GameTable;
+    private String printSquare(int x, int y){
+        if(!gameTable[x][y].isUncovered){
+            return " ? ";
+        }
+        else {
+            if(gameTable[x][y].isMineHere)
+                return " x ";
+            else
+                return " " + gameTable[x][y].numberOfMinesAround + " ";
+        }
     }
 
 
     public void print() {
-        System.out.println("   1   2   3   4   5");
-        System.out.println("a " +GameTable[0][0] + "|" +GameTable[0][1] + "|"+ GameTable[0][2] + "|"+ GameTable[0][3] + "|"+ GameTable[0][4]);
+        System.out.println("   a   b   c   d   e");
+        System.out.println("1 " + printSquare(0,0) + "|" + printSquare(1,0) + "|"+ printSquare(2,0) + "|"+ printSquare(3,0) + "|" + printSquare(4,0));
         System.out.println("  ---+---+---+---+---");
-        System.out.println("b "+ GameTable[1][0] + "|" +GameTable[1][1] + "|"+ GameTable[1][2] + "|"+ GameTable[1][3] + "|"+ GameTable[1][4]);
+        System.out.println("2 " + printSquare(0,1) + "|" + printSquare(1,1) + "|"+ printSquare(2,1) + "|"+ printSquare(3,1) + "|" + printSquare(4,1));
         System.out.println("  ---+---+---+---+---");
-        System.out.println("c "+GameTable[2][0] + "|" +GameTable[2][1] + "|"+ GameTable[2][2] + "|"+ GameTable[2][3] + "|"+ GameTable[2][4]);
+        System.out.println("3 " + printSquare(0,2) + "|" + printSquare(2,2) + "|"+ printSquare(2,2) + "|"+ printSquare(3,2) + "|" + printSquare(4,2));
         System.out.println("  ---+---+---+---+---");
-        System.out.println("d "+GameTable[3][0] + "|"+ GameTable[3][1] + "|"+ GameTable[3][2] + "|"+ GameTable[3][3] + "|"+ GameTable[3][4]);
-
+        System.out.println("4 " + printSquare(0,3) + "|" + printSquare(3,3) + "|"+ printSquare(2,3) + "|"+ printSquare(3,3) + "|" + printSquare(4,3));
     }
 }
