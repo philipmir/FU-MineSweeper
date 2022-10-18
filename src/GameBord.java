@@ -20,12 +20,12 @@ public class GameBord {
 
     public void fillWithMines() {
         for (int i = 0; i < 7; i++) { // setting 7 mines in 7 different squares.
-            int x = rand.nextInt(4);
-            int y = rand.nextInt(5);
+            int x = rand.nextInt(5);
+            int y = rand.nextInt(4);
             while (gameTable[x][y].isMineHere==true) { // to make sure that the square randomly picked has no mine in it,
                 // if there is a mine in the square, just try to find another one with no mine.
-                x = rand.nextInt(4);
-                y = rand.nextInt(5);
+                x = rand.nextInt(5);
+                y = rand.nextInt(4);
             }
             gameTable[x][y].isMineHere=true;
         }
