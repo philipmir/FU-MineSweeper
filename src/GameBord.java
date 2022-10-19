@@ -14,9 +14,9 @@ public class GameBord {
     }
 
 
-    public Square wantedPosition(int raw, String colonInLetters){ // returns the position selected by the player by typing the wanted raw (1-5) and the wanted colon (a-e).
-        int colonInNumbers = colonInLetters.charAt(0)-97; // converts the colon from the letter to number (a-e) to (0-4)
-        return(gameTable[raw-1][colonInNumbers]);// returns the wanted position raw(1-4) to (0-3).
+    public Square wantedPosition(int raw, String columnInLetters){ // returns the position selected by the player by typing the wanted raw (1-5) and the wanted colon (a-e).
+        int columnInNumbers = columnInLetters.charAt(0)-97; // converts the column from the letter to number (a-e) to (0-4)
+        return(gameTable[raw-1][colonInNumbers]);
     }
 
 
