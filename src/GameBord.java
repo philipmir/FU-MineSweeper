@@ -14,9 +14,9 @@ public class GameBord {
     }
 
 
-    public Square wantedPosition(int raw, String columnInLetters){ // returns the position selected by the player by typing the wanted raw (1-5) and the wanted colon (a-e).
+    public Square wantedPosition(int row, String columnInLetters){ // returns the position selected by the player by typing the wanted raw (1-5) and the wanted colon (a-e).
         int columnInNumbers = columnInLetters.charAt(0)-97; // converts the column from the letter to number (a-e) to (0-4)
-        return(gameTable[raw-1][colonInNumbers]);
+        return(gameTable[row-1][columnInNumbers]);
     }
 
 
@@ -28,7 +28,7 @@ public class GameBord {
         for (int i = 0; i < 7; i++) { // setting 7 mines in 7 different squares.
             int x = rand.nextInt(5);
             int y = rand.nextInt(4);
-            while (gameTable[x][y].isMineHere==true) { // to make sure that the square randomly picked has no mine in it,
+            while (gameTable[x][y].isMineHere) { // to make sure that the square randomly picked has no mine in it,
                 // if there is a mine in the square, just try to find another one with no mine.
                 x = rand.nextInt(5);
                 y = rand.nextInt(4);
