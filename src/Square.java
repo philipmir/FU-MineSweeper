@@ -9,15 +9,16 @@ public class Square {
     //Coordinates could be used when passing an individual square between functions.
     //If we don't find use to it, we should remove it!
 
-    //Horizontal coordinate.
-    public int x;
     //Vertical coordinate
-    public int y;
+    public int row;
+    //Horizontal coordinate.
+    public int column;
+
 
 
     public Square() {
-        x = 0;
-        y = 0;
+        row = 0;
+        column = 0;
         numberOfMinesAround = 0;
         isMineHere = false;
         isUncovered = false;

@@ -1,8 +1,11 @@
 public class Main {
     public static void main(String[] args) {
-        GameBord g1 = new GameBord();
+        GameBord board = new GameBord();
+        board.fillWithMines();
 
-        g1.print();
+        board.printRevealed();  //This should be removed when development is finished
+
+        board.print();
         Game.startText();
     }
 }
