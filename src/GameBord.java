@@ -47,6 +47,17 @@ public class GameBord {
                 column = rand.nextInt(5);
             }
             gameTable[row][column].isMineHere=true;
+            //Update neighboring squares
+            int rowStart,colStart,rowEnd,colEnd;
+            rowStart = row > 0 ? row - 1 : row;
+            rowEnd = row < 3 ? row + 1 : row;
+            colStart = column > 0 ? column - 1 : column;
+            colEnd = column < 4 ? column + 1  : column;
+            for (int r = rowStart; r <= rowEnd; r++){
+                for (int c = colStart; c <= colEnd; c++){
+                    gameTable[r][c].numberOfMinesAround++;
+                }
+            }
         }
     }
 
@@ -71,6 +82,7 @@ public class GameBord {
         System.out.println("c " + printSquare(2,0) + "|" + printSquare(2,1) + "|"+ printSquare(2,2) + "|"+ printSquare(2,3) + "|" + printSquare(2,4));
         System.out.println("  ---+---+---+---+---");
         System.out.println("d " + printSquare(3,0) + "|" + printSquare(3,1) + "|"+ printSquare(3,2) + "|"+ printSquare(3,3) + "|" + printSquare(3,4));
+        System.out.println();
     }
 
 
@@ -84,6 +96,7 @@ public class GameBord {
         System.out.println("c " + printSquareRevealed(2,0) + "|" + printSquareRevealed(2,1) + "|"+ printSquareRevealed(2,2) + "|"+ printSquareRevealed(2,3) + "|" + printSquareRevealed(2,4));
         System.out.println("  ---+---+---+---+---");
         System.out.println("d " + printSquareRevealed(3,0) + "|" + printSquareRevealed(3,1) + "|"+ printSquareRevealed(3,2) + "|"+ printSquareRevealed(3,3) + "|" + printSquareRevealed(3,4));
+        System.out.println();
     }
 
     //For developing
