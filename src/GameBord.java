@@ -14,19 +14,19 @@ public class GameBord {
     }
 
 
-    public Square wantedPosition(String row, String column){ // returns the position selected by the player by typing the wanted raw (1-5) and the wanted colon (a-e).
-        int rowInNumbers = row.charAt(0)-97; // converts the column from the letter to number (a-e) to (0-4)
+    public Square wantedPosition(String row, String column){ // returns the position selected by the player by typing the wanted row (a-d) and the wanted column (1-5) .
+        int rowInNumbers = row.charAt(0)-97; // converts the column from the letter to number (a-d) to (0-4)
         return(gameTable[rowInNumbers][Integer.parseInt(column)-1]);
     }
 
     //checks if the user chose right inputs or not,
-    public boolean checkInput(String raw, String column){
+    public boolean checkInput(String row, String column){
 
-        if (!raw.equals("1") && !raw.equals("2")&& !raw.equals("3") && !raw.equals("4")){
+        if (!row.equals("a") && !row.equals("b")&& !row.equals("c") && !row.equals("d")){
             return false;
         }
         else{
-            if (!column.equals("a")&&!column.equals("b")&&!column.equals("c")&&!column.equals("d")&&!column.equals("e")){
+            if (!column.equals("1")&&!column.equals("2")&&!column.equals("3")&&!column.equals("4")&&!column.equals("5")){
                 return false;
             }
         }
