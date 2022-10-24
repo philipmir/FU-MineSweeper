@@ -13,7 +13,7 @@ public class Game {
         System.out.println("What is your name?");
         player.setName(scan.nextLine());
         System.out.println("How many mines do you want? 1-19");
-        mineCount = scan.nextInt();
+        mineCount = scan.nextInt();  // Ask player how many mines and set it in fillWithMines()
         System.out.println("Welcome " + player.getName() + ". You are playing with " + mineCount + " mines, type your first move, row and column:");
 
     }
