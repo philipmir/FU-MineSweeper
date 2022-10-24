@@ -23,7 +23,7 @@ public class Game {
         GameBord table= new GameBord();
         table.fillWithMines();
         table.print();
-        int i=1;
+        boolean gameEnded = false;
 
         do{
             System.out.println("row: ");
@@ -34,10 +34,10 @@ public class Game {
             table.print();
             if (square.isMineHere==true) {
                 System.out.println("Boom!! there is a bomb");
-                i=0;
+                gameEnded=true;
             }
 
-        }while(i==1);
+        }while(!gameEnded);
 
     }
 
