@@ -18,4 +18,27 @@ public class Game {
 
     }
 
+    public static void gamePlay(){
+        Scanner scan= new Scanner(System.in);
+        GameBord table= new GameBord();
+        table.fillWithMines();
+        table.print();
+        int i=1;
+
+        do{
+            System.out.println("row: ");
+            String row= scan.next();
+            System.out.println("column: ");
+            String column = scan.next();
+            Square square = table.move(row,column);
+            table.print();
+            if (square.isMineHere==true) {
+                System.out.println("Boom!! there is a bomb");
+                i=0;
+            }
+
+        }while(i==1);
+
+    }
+
 }
