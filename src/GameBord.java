@@ -37,8 +37,10 @@ public class GameBord {
         return gameTable;
     }
 
+
+
     public void fillWithMines() {
-        for (int i = 0; i < 7; i++) { // setting 7 mines in 7 different squares.
+        for (int i = 0; i < Game.mineCount; i++) { // setting 7 mines in 7 different squares.
             int row = rand.nextInt(4);
             int column = rand.nextInt(5);
             while (gameTable[row][column].isMineHere) { // to make sure that the square randomly picked has no mine in it,
