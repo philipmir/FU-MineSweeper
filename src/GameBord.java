@@ -63,6 +63,16 @@ public class GameBord {
         }
     }
 
+    public Square move(String row, String column){ // the player will be able to make a move, the wanted square will be uncovered
+        if(checkInput(row,column)==true) {
+            wantedPosition(row, column).isUncovered = true;
+        }
+        else{
+            System.out.println("Invalid input");
+        }
+        return wantedPosition(row,column);
+    }
+
     private String printSquare(int row, int column){
         if(!gameTable[row][column].isUncovered){
             return " ? ";
