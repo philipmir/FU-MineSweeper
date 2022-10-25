@@ -51,7 +51,7 @@ public class Game {
         }while(!gameEnded);
     }
 
-    public static int inputErrorCatch() {  // Crash MaxMin-mines/exception, return working mineCount.
+    public static int inputErrorCatch() {  // Catch MaxMin-mines/exception, return working mineCount.
         while (true) {
             try {
                 mineCount = scan.nextInt();  // Ask player how many mines and set it in fillWithMines()
