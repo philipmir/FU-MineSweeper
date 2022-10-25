@@ -54,10 +54,10 @@ public class Game {
     public static int inputErrorCatch() {  // Crash MaxMin-mines/exception, return working mineCount.
         while (true) {
             try {
-                Game.mineCount = scan.nextInt();  // Ask player how many mines and set it in fillWithMines()
-                if (Game.mineCount < 1) {
+                mineCount = scan.nextInt();  // Ask player how many mines and set it in fillWithMines()
+                if (mineCount < 1) {
                     System.out.println("You took too few mines! Try again 1-19");
-                } else if (Game.mineCount > 19) {
+                } else if (mineCount > 19) {
                     System.out.println("You took too many mines! Try again 1-19");
                 } else {
                     break;
