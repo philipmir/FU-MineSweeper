@@ -64,6 +64,9 @@ public class GameBord {
     }
 
     public Square move(String row, String column){ // the player will be able to make a move, the wanted square will be uncovered
+        if(wantedPosition(row, column).isUncovered == true){//to check if a tile/square is already unconvered, if so, the move would be invalid
+            System.out.println("Invalid input, please try again");
+        }
         if(checkInput(row,column)==true) {
             wantedPosition(row, column).isUncovered = true;
         }
