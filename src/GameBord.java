@@ -4,6 +4,8 @@ public class GameBord {
     Random rand = new Random();
     private final Square[][] gameTable;
 
+    public int questionMarksRemaining = 20;
+
     public GameBord() {
         this.gameTable  = new Square[4][5];
         for(int row = 0; row < 4; row++){
@@ -16,7 +18,10 @@ public class GameBord {
 
     public Square wantedPosition(String row, String column){ // returns the position selected by the player by typing the wanted row (a-d) and the wanted column (1-5) .
         int rowInNumbers = row.charAt(0)-97; // converts the column from the letter to number (a-d) to (0-4)
-        return(gameTable[rowInNumbers][Integer.parseInt(column)-1]);
+        Square result = gameTable[rowInNumbers][Integer.parseInt(column)-1];
+        result.row = rowInNumbers;
+        result.column = Integer.parseInt(column)-1;
+        return(result);
     }
 
     //checks if the user chose right inputs or not,
@@ -64,7 +69,7 @@ public class GameBord {
     }
 
     public Square move(String row, String column){ // the player will be able to make a move, the wanted square will be uncovered
-        if(wantedPosition(row, column).isUncovered == true){//to check if a tile/square is already unconvered, if so, the move would be invalid
+        if(wantedPosition(row, column).isUncovered == true){//to check if a tile/square is already uncovered, if so, the move would be invalid
             System.out.println("Invalid input, please try again");
         }
         if(checkInput(row,column)==true) {
@@ -74,6 +79,26 @@ public class GameBord {
             System.out.println("Invalid input");
         }
         return wantedPosition(row,column);
+    }
+
+    public void uncoverAroundZeros(int row, int column){
+        int rowStart,colStart,rowEnd,colEnd;
+        rowStart = row > 0 ? row - 1 : row;
+        rowEnd = row < 3 ? row + 1 : row;
+        colStart = column > 0 ? column - 1 : column;
+        colEnd = column < 4 ? column + 1  : column;
+        for (int r = rowStart; r <= rowEnd; r++){
+            for (int c = colStart; c <= colEnd; c++){
+                if(!gameTable[r][c].isUncovered && !gameTable[r][c].isMineHere){
+                    gameTable[r][c].isUncovered = true;
+                    questionMarksRemaining--;
+                    //when a neighbouring square is uncovered and is also a zero, uncover squares around it. (recursion)
+                    if(gameTable[r][c].numberOfMinesAround == 0) {
+                        uncoverAroundZeros(r,c);
+                    }
+                }
+            }
+        }
     }
 
     private String printSquare(int row, int column){
