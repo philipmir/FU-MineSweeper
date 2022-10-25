@@ -18,6 +18,7 @@ public class Game {
     }
 
     public static void gamePlay(){
+        table= new GameBord();
         table.fillWithMines();
         table.printRevealed(); //for development only
         table.print();
@@ -27,27 +28,32 @@ public class Game {
             String row= scan.next();
             System.out.println("column: ");
             String column = scan.next();
-            Square square = table.move(row,column);
-            //countUncovered++; count for how many tiles are uncovered, for winning argument below
-            //System.out.println(" ? uncovered: " + countUncovered);//for developing purposes, comment out if game finished
-            if (square.isMineHere) {
-                System.out.println("Boom!! there is a bomb");
-                gameEnded=true;
+            if (table.checkInput(row, column)==false) {
+                System.out.println("Invalid input");
             }
-            if(square.isUncovered){//it's not watertight. If you make an invalid move it still counts instead of ignores the already opened field.
-                table.questionMarksRemaining--;
-                System.out.println("Question marks remaining: " + table.questionMarksRemaining);
-
-                if(square.numberOfMinesAround == 0) {
-                    table.uncoverAroundZeros(square.row,square.column);
+            else {
+                Square square = table.move(row, column);
+                //countUncovered++; count for how many tiles are uncovered, for winning argument below
+                //System.out.println(" ? uncovered: " + countUncovered);//for developing purposes, comment out if game finished
+                if (square.isMineHere) {
+                    System.out.println("Boom!! there is a bomb");
+                    gameEnded = true;
                 }
-            }
-            if (table.questionMarksRemaining == mineCount){//
-                System.out.println("Yeah, you won!! You found all the mines");
-                break;
-            }
+                if (square.isUncovered) {//it's not watertight. If you make an invalid move it still counts instead of ignores the already opened field.
+                    table.questionMarksRemaining--;
+                    System.out.println("Question marks remaining: " + table.questionMarksRemaining);
 
-            table.print();
+                    if (square.numberOfMinesAround == 0) {
+                        table.uncoverAroundZeros(square.row, square.column);
+                    }
+                }
+                if (table.questionMarksRemaining == mineCount) {//
+                    System.out.println("Yeah, you won!! You found all the mines");
+                    break;
+                }
+
+                table.print();
+            }
         }while(!gameEnded);
     }
 }
