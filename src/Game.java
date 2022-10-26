@@ -27,10 +27,7 @@ public class Game {
             String row= scan.next();
             System.out.println("column: ");
             String column = scan.next();
-            if (table.checkInput(row, column)==false) {
-                System.out.println("Invalid input");
-            }
-            else {
+            if (table.checkInput(row, column)) {
                 Square square = table.move(row, column);
                 //countUncovered++; count for how many tiles are uncovered, for winning argument below
                 //System.out.println(" ? uncovered: " + countUncovered);//for developing purposes, comment out if game finished

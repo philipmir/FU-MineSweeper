@@ -28,12 +28,15 @@ public class GameBord {
     public boolean checkInput(String row, String column){
 
         if (!row.equals("a") && !row.equals("b")&& !row.equals("c") && !row.equals("d")){
+            System.out.println("Invalid input");
             return false;
         }
         else if (!column.equals("1")&&!column.equals("2")&&!column.equals("3")&&!column.equals("4")&&!column.equals("5")) {
+            System.out.println("Invalid input");
             return false;
         }
-        else if (wantedPosition(row, column).isUncovered == true) {
+        else if (wantedPosition(row, column).isUncovered){
+            System.out.println("Already uncovered, please try one with a question mark");
             return false;
         }
         return true;
@@ -69,16 +72,9 @@ public class GameBord {
         }
     }
 
-    public Square move(String row, String column){ // the player will be able to make a move, the wanted square will be uncovered
-        if(wantedPosition(row, column).isUncovered == true){//to check if a tile/square is already uncovered, if so, the move would be invalid
-            System.out.println("Invalid input, please try again");
-        }
-        if(checkInput(row,column)==true) {
+    //Uncovers and returns the wanted square
+    public Square move(String row, String column){
             wantedPosition(row, column).isUncovered = true;
-        }
-        else{
-            System.out.println("Invalid input");
-        }
         return wantedPosition(row,column);
     }
 
