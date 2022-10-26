@@ -31,6 +31,8 @@ public class Game {
                 Square square = table.move(row, column);
                 if (square.isMineHere) {
                     System.out.println("Boom!! there is a bomb");
+                    System.out.println("Here are the mine locations.");
+                    table.printRevealed(); // Show the board/mines
                     break;
                 }
                 if (square.isUncovered) {
