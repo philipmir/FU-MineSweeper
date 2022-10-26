@@ -5,13 +5,8 @@ public class Square {
 
     public boolean isUncovered;
 
-
-    //Coordinates could be used when passing an individual square between functions.
-    //If we don't find use to it, we should remove it!
-
-    //Vertical coordinate
     public int row;
-    //Horizontal coordinate.
+
     public int column;
 
 

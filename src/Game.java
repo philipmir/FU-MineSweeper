@@ -27,18 +27,13 @@ public class Game {
             String row= scan.next();
             System.out.println("column: ");
             String column = scan.next();
-            if (table.checkInput(row, column)==false) {
-                System.out.println("Invalid input");
-            }
-            else {
+            if (table.checkInput(row, column)) {
                 Square square = table.move(row, column);
-                //countUncovered++; count for how many tiles are uncovered, for winning argument below
-                //System.out.println(" ? uncovered: " + countUncovered);//for developing purposes, comment out if game finished
                 if (square.isMineHere) {
                     System.out.println("Boom!! there is a bomb");
                     break;
                 }
-                if (square.isUncovered) {//it's not watertight. If you make an invalid move it still counts instead of ignores the already opened field.
+                if (square.isUncovered) {
                     table.questionMarksRemaining--;
 
                     if (square.numberOfMinesAround == 0) {
