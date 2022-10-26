@@ -41,11 +41,12 @@ public class Game {
                 }
                 if (square.isUncovered) {//it's not watertight. If you make an invalid move it still counts instead of ignores the already opened field.
                     table.questionMarksRemaining--;
-                    System.out.println("Question marks remaining: " + table.questionMarksRemaining);
 
                     if (square.numberOfMinesAround == 0) {
                         table.uncoverAroundZeros(square.row, square.column);
                     }
+
+                    System.out.println("Question marks remaining: " + table.questionMarksRemaining);
                 }
                 if (table.questionMarksRemaining == mineCount) {//
                     System.out.println("Yeah, you won!! You found all the mines");
