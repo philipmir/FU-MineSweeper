@@ -22,7 +22,6 @@ public class Game {
         table.fillWithMines();
         table.printRevealed(); //for development only
         table.print();
-        boolean gameEnded = false;
         do{
             System.out.println("row: ");
             String row= scan.next();
@@ -37,7 +36,7 @@ public class Game {
                 //System.out.println(" ? uncovered: " + countUncovered);//for developing purposes, comment out if game finished
                 if (square.isMineHere) {
                     System.out.println("Boom!! there is a bomb");
-                    gameEnded = true;
+                    break;
                 }
                 if (square.isUncovered) {//it's not watertight. If you make an invalid move it still counts instead of ignores the already opened field.
                     table.questionMarksRemaining--;
@@ -55,7 +54,7 @@ public class Game {
 
                 table.print();
             }
-        }while(!gameEnded);
+        }while(true);
     }
 
     public static int inputErrorCatch() {  // Catch MaxMin-mines/exception, return working mineCount.
