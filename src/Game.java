@@ -12,7 +12,7 @@ public class Game {
         System.out.println("What is your name?");
         player.setName(scan.nextLine());
         System.out.println("How many mines do you want? 1-19 (recommended is 4)");
-        mineCount = scan.nextInt();  // Ask player how many mines and set it in fillWithMines()
+        int minesMaxMin = inputErrorCatch();  // mineMaxMinLimit and string catch.
         System.out.println("Welcome " + player.getName() + ". You are playing with " + mineCount + " mines, type your first move, row and column:");
 
     }
@@ -49,5 +49,24 @@ public class Game {
 
             table.print();
         }while(!gameEnded);
+    }
+
+    public static int inputErrorCatch() {  // Catch MaxMin-mines/exception, return working mineCount.
+        while (true) {
+            try {
+                mineCount = scan.nextInt();  // Ask player how many mines and set it in fillWithMines()
+                if (mineCount < 1) {
+                    System.out.println("You took too few mines! Try again 1-19");
+                } else if (mineCount > 19) {
+                    System.out.println("You took too many mines! Try again 1-19");
+                } else {
+                    break;
+                }
+            }catch(Exception e){
+                System.out.println("Error! Try again 1-19.");
+                scan.nextLine();
+            }
+        }
+        return mineCount;
     }
 }
