@@ -30,10 +30,11 @@ public class GameBord {
         if (!row.equals("a") && !row.equals("b")&& !row.equals("c") && !row.equals("d")){
             return false;
         }
-        else{
-            if (!column.equals("1")&&!column.equals("2")&&!column.equals("3")&&!column.equals("4")&&!column.equals("5")){
-                return false;
-            }
+        else if (!column.equals("1")&&!column.equals("2")&&!column.equals("3")&&!column.equals("4")&&!column.equals("5")) {
+            return false;
+        }
+        else if (wantedPosition(row, column).isUncovered == true) {
+            return false;
         }
         return true;
     }
