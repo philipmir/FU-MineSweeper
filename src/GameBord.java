@@ -42,11 +42,6 @@ public class GameBord {
         return true;
     }
 
-    public Square[][] getGameTable() {
-        return gameTable;
-    }
-
-
 
     public void fillWithMines() {
         for (int i = 0; i < Game.mineCount; i++) { // setting 7 mines in 7 different squares.
