@@ -118,7 +118,6 @@ public class GameBord {
     }
 
 
-    //For developing
     public void printRevealed() {
         System.out.println("   1   2   3   4   5");
         System.out.println("a " + printSquareRevealed(0,0) + "|" + printSquareRevealed(0,1) + "|"+ printSquareRevealed(0,2) + "|"+ printSquareRevealed(0,3) + "|" + printSquareRevealed(0,4));
@@ -131,11 +130,14 @@ public class GameBord {
         System.out.println();
     }
 
-    //For developing
     private String printSquareRevealed(int row, int column){
         if(gameTable[row][column].isMineHere)
             return " x ";
         else
-            return " " + gameTable[row][column].numberOfMinesAround + " ";
+            if(!gameTable[row][column].isUncovered){
+                return " ? ";
+            }
+            else
+                return " " + gameTable[row][column].numberOfMinesAround + " ";
     }
 }
