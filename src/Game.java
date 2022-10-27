@@ -23,7 +23,6 @@ public class Game {
     public static void gamePlay(){
         table= new GameBord();
         table.fillWithMines();
-        table.printRevealed(); //for development only
         table.print();
         do{
             System.out.println("row: ");
