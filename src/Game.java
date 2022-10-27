@@ -11,10 +11,13 @@ public class Game {
         System.out.println("Welcome to MineSweeper!");
         System.out.println("What is your name?");
         player.setName(scan.nextLine());
-        System.out.println("How many mines do you want? 1-19 (recommended is 4)");
-        int minesMaxMin = inputErrorCatch();  // mineMaxMinLimit and string catch.
+        selectNumberOfMines();
         System.out.println("Welcome " + player.getName() + ". You are playing with " + mineCount + " mines, type your first move, row and column:");
+    }
 
+    public static void selectNumberOfMines(){
+        System.out.println("How many mines do you want? 1-19 (recommended is 4)");
+        inputMinesCount();
     }
 
     public static void gamePlay(){
@@ -54,7 +57,7 @@ public class Game {
         }while(true);
     }
 
-    public static int inputErrorCatch() {  // Catch MaxMin-mines/exception, return working mineCount.
+    private static void inputMinesCount() {
         while (true) {
             try {
                 mineCount = scan.nextInt();  // Ask player how many mines and set it in fillWithMines()
@@ -70,6 +73,5 @@ public class Game {
                 scan.nextLine();
             }
         }
-        return mineCount;
     }
 }
